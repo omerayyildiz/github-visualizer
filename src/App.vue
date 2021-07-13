@@ -102,7 +102,8 @@
       </div>
       <div v-else class="flex justify-center items-center">
         <h1 class="text-gray-200">
-          Welcome to Github Visualizer. Write username to textbox and press Enter!
+          Welcome to Github Visualizer. Write username to textbox and press
+          Enter!
         </h1>
       </div>
     </div>
@@ -129,7 +130,14 @@ export default {
       return "https://github.com/" + this.userinfo.login + "?tab=repositories";
     },
     getWebsite: function () {
-      return "http://" + this.userinfo.blog;
+      let url = this.userinfo.blog;
+      if (url.startsWith("www")) {
+        return "http://" + this.userinfo.blog;
+      } else if (url.startsWith("https://")) {
+        return this.userinfo.blog;
+      } else {
+        return "https://" + this.userinfo.blog;
+      }
     },
     getLocation: function () {
       if (this.userinfo.location != null) {
