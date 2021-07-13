@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      flex
+      grid
       sm:grid
       items-center
       justify-center
@@ -11,7 +11,7 @@
   >
     <input
       type="text"
-      class="mt-8 h-8 rounded-full p-2 bg-gray-300 text-gray-800 outline-none"
+      class="mt-8 mx-2 md:mx-0 h-8 rounded-full p-4 bg-gray-300 text-gray-800 outline-none"
       placeholder="Search..."
       focus="bg-gray-100"
       v-model="query"
@@ -20,9 +20,10 @@
     <div
       class="
         bg-gray-700
-        p-6
-        mb-16
-        sm:grid
+        md:p-6
+        p-2
+        mx-2
+        grid
         rounded-lg
         items-start
         justify-items-center
@@ -79,7 +80,7 @@
               {{ "Following: " + userinfo.following }}
             </h3>
           </div>
-          <div class="space-x-3 mt-4">
+          <div class="space-x-3 sm:flex mt-4">
             <a
               class="links"
               :href="getTwitter()"
@@ -117,7 +118,7 @@
         </h1>
       </div>
     </div>
-    <Footer />
+    <Footer class="mx-2 md:mx-0"/>
   </div>
 </template>
 
@@ -126,8 +127,8 @@ import Footer from "/src/components/Footer.vue";
 
 export default {
   components: {
-    Footer
-    },
+    Footer,
+  },
   data() {
     return {
       userinfo: [],
