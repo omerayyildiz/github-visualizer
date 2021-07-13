@@ -11,8 +11,9 @@
   >
     <input
       type="text"
-      class="mt-8 h-8 rounded-full p-2 bg-gray-300 text-gray-800"
+      class="mt-8 h-8 rounded-full p-2 bg-gray-300 text-gray-800 outline-none"
       placeholder="Search..."
+      focus="bg-gray-100"
       v-model="query"
       @keypress="getUser"
     />
@@ -32,11 +33,12 @@
           class="rounded-full w-56 h-56"
           :href="userinfo.avatar_url"
           title="If you want this image click the photo"
+          target="_blank"
         >
           <img :src="userinfo.avatar_url" class="rounded-full w-56 h-56" />
         </a>
         <div class="ml-4">
-          <a :href="userinfo.html_url">
+          <a :href="userinfo.html_url" target="_blank">
             <h1
               class="
                 flex
@@ -81,17 +83,25 @@
             <a
               class="links"
               :href="getTwitter()"
+              target="_blank"
               v-if="userinfo.twitter_username != null"
             >
               {{ "@" + userinfo.twitter_username }}
             </a>
-            <a :href="getRepo()" class="links">
+            <a :href="getRepo()" target="_blank" class="links">
               {{ "Repos: " + userinfo.public_repos }}
             </a>
-            <a :href="getWebsite()" class="links" v-if="userinfo.blog != null">
+            <a
+              :href="getWebsite()"
+              target="_blank"
+              class="links"
+              v-if="userinfo.blog != null"
+            >
               Website
             </a>
-            <a :href="getFollowers()" class="links"> Followers </a>
+            <a :href="getFollowers()" target="_blank" class="links">
+              Followers
+            </a>
           </div>
           <div class="flex mt-2">
             <h2 class="text-gray-200">
@@ -107,11 +117,17 @@
         </h1>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from "/src/components/Footer.vue";
+
 export default {
+  components: {
+    Footer
+    },
   data() {
     return {
       userinfo: [],
