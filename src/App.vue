@@ -102,7 +102,7 @@
       </div>
       <div v-else class="flex justify-center items-center">
         <h1 class="text-gray-200">
-          Hello to Github Visualizer. Write textbox to username
+          Welcome to Github Visualizer. Write username to textbox and press Enter!
         </h1>
       </div>
     </div>
